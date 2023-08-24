@@ -9,7 +9,7 @@ import { ItemList } from './ItemList';
 export const App = () => {
 
 	const [sauces, setSauces] = useState([]);
-	const [items, setItems] = useState([]);
+
 
 	async function fetchSauces() {
 		try {
@@ -21,16 +21,6 @@ export const App = () => {
 			console.log("Oh no an error! ", err)
 		}
 	};
-
-	async function fetchAllItems() {
-		try {
-			const response = await fetch(`${apiURL}/items`);
-			const itemsData = await response.json();
-			setItems(itemsData);
-		} catch (err) {
-			console.log('Error', err);
-		}
-	}
 
 	useEffect(() => {
 		fetchSauces();
