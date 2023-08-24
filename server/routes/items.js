@@ -1,15 +1,25 @@
-const express = require('express');
+const express = require("express");
 const itemsRouter = express.Router();
-const { Item } = require('../models/Item');
+const { Item } = require("../models/Item");
 
-itemsRouter.get('/', async (req, res, next) => {
-    try {
-        const items = await Item.findAll();
-        res.json(items);
-    } catch (err) {
-        console.log(`Can not find all items!`);
-        next(err);
-    }
+// GET / Item
+itemsRouter.get("/", async (req, res, next) => {
+  try {
+    const items = await Item.findAll();
+    res.json(items);
+  } catch (err) {
+    console.log(`Can not find all items!`);
+    next(err);
+  }
 });
 
-module.exports = itemsRouter
+// GET / Item:id
+itemsRouter.get("/:id", async (req, res, next) => {
+  try {
+    const item = await Item.findByPk(req.params.id);
+    res.send(item);
+  } catch (error) {
+    next(error);
+  }
+});
+module.exports = itemsRouter;
