@@ -21,6 +21,7 @@ export function ItemList() {
     return (
         <>
             {items.map((item, idx) => (
+
                 <Item item={item} id={item.id} />
             ))}
         </>
