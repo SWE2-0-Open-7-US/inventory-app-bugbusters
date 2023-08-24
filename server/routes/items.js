@@ -22,4 +22,14 @@ itemsRouter.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+// POST / Item
+itemsRouter.post("/", async (req, res, next) => {
+  try {
+    const item = await Item.create(req.body);
+    res.send(item);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = itemsRouter;
