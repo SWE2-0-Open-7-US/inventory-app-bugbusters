@@ -22,4 +22,28 @@ itemsRouter.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+// DELETE / Item:id
+itemsRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const item = await Item.findByPk(req.params.id);
+    await item.destroy();
+
+    res.send(item);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// PUT / Item:id
+itemsRouter.put("/:id", async (req, res, next) => {
+  try {
+    const item = await Item.findByPk(req.params.id);
+    await item.update(req.body);
+
+    res.send(item);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = itemsRouter;
