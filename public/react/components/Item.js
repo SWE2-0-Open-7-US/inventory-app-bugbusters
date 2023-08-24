@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Item() {
+export function Item({ item }) {
     return (
         <>
-            <h1>Single Item</h1>
+            <h3>{item.name}</h3>
         </>
     )
 }
