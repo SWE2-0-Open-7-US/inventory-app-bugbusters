@@ -8,6 +8,7 @@ import apiURL from "../api";
 import { ItemList } from "./ItemList";
 import { SingleItem } from "./SingleItem";
 import { EditItem } from "./EditItem";
+import { Form } from "./Form";
 
 export const App = () => {
 
@@ -29,14 +30,15 @@ export const App = () => {
 	}, []);
 
 	return (
-			<main>
-				<Routes>
-					<Route path="/sauceList" element={<SaucesList sauces={sauces}/>}/>
-					<Route path="/items" element={<ItemList/>}/>
-					<Route path="/items/:itemId" element={<SingleItem/>}/>
-					<Route path="/items/:itemId/edit" element={<EditItem/>}/>
-					<Route path="*" element={<ItemList/>}/>
-				</Routes>
-			</main>
+		<main>
+			<Routes>
+				<Route path="/sauceList" element={<SaucesList sauces={sauces} />} />
+				<Route path="/items" element={<ItemList />} />
+				<Route path="/items/:itemId" element={<SingleItem />} />
+				<Route path="/items/:itemId/edit" element={<EditItem />} />
+				<Route path="*" element={<ItemList />} />
+				<Route path="/items/addItem" element={<Form />} />
+			</Routes>
+		</main>
 	);
 };
