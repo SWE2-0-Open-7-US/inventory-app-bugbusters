@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { SaucesList } from "./SaucesList";
-import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { SaucesList } from './SaucesList';
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api";
 import { ItemList } from "./ItemList";
 import { SingleItem } from "./SingleItem";
 import { EditItem } from "./EditItem";
-import { Form } from './Form'
 
 export const App = () => {
 
@@ -20,7 +18,7 @@ export const App = () => {
 
 			setSauces(saucesData);
 		} catch (err) {
-			console.log("Oh no an error! ", err);
+			console.log("Oh no an error! ", err)
 		}
 	}
 
@@ -36,7 +34,6 @@ export const App = () => {
 				<Route path="/items/:itemId" element={<SingleItem />} />
 				<Route path="/items/:itemId/edit" element={<EditItem />} />
 				<Route path="*" element={<ItemList />} />
-				<Route path="/items/addItem" element={<Form />} />
 			</Routes>
 		</main>
 	);
