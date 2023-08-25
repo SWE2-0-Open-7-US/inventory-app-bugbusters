@@ -3,9 +3,9 @@ import { fetchSingleItem } from "../apis";
 import { useNavigate, useParams } from "react-router-dom";
 
 const SingleItem = () => {
-  const navigation = useNavigate();
-  const { itemId } = useParams();
-  const [item, setItem] = useState(null);
+	const navigation = useNavigate();
+	const {itemId} = useParams();
+	const [item, setItem] = useState(null);
 
   const [Availability, setAvailability] = useState(true);
   async function handleClick() {
@@ -18,33 +18,32 @@ const SingleItem = () => {
     }
   }
 
-  useEffect(() => {
-    if (itemId) fetchSingleItem(itemId).then((data) => setItem(data));
-  }, [itemId]);
+	useEffect(() => {
+		if (itemId) fetchSingleItem(itemId).then((data) => setItem(data));
+	}, [itemId]);
 
-  if (!item) return null;
+	if (!item) return null;
 
-  return (
-    <>
-      {Availability && (
-        <main>
-          <h3>{`${item.name} $${item.price}`}</h3>
-          <img src={item.image} alt="item-pic" />
-          <p>{item.description}</p>
-          <p>{`Tags: ${item.category}`}</p>
-          <button
-            onClick={() =>
-              navigation(`/items/${itemId}/edit`, { state: { item } })
-            }
-          >
-            Edit Item
-          </button>
-          <button onClick={handleClick}>Delete Item</button>
-        </main>
-      )}
-      <button onClick={() => navigation(`/items`)}>BACK</button>
-    </>
-  );
+	return (
+			<>
+				{Availability && (
+						<main>
+							<h3>{`${item.name} $${item.price}`}</h3>
+							<img src={item.image} alt="item-pic"/>
+							<p>{item.description}</p>
+							<p>{`Tags: ${item.category}`}</p>
+							<button
+									onClick={() =>
+											navigation(`/items/${itemId}/edit`, {state: {item}})
+									}
+							>
+								Edit Item
+							</button>
+							<button onClick={handleClick}>Delete Item</button>
+						</main>
+				)}
+			</>
+	);
 };
 
 export { SingleItem };
