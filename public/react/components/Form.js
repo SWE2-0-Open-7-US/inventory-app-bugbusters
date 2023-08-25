@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import apiURL from "../api";
+import { useNavigate } from "react-router-dom";
 
 export function Form() {
+    const navigation = useNavigate();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -17,7 +19,7 @@ export function Form() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newItem)
         });
-        location.replace('http://localhost:1234/items/')
+        navigation('items/');
         setName('');
         setDescription('');
         setPrice('');
