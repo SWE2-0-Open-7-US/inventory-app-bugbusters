@@ -4,6 +4,7 @@ const {db} = require("./index");
 
 let item;
 
+//comment
 beforeAll(async () => {
 	await db.sync({force: true});
 	item = await Item.create({
