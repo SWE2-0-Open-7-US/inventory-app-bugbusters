@@ -13,6 +13,7 @@ const SingleItem = () => {
       method: "DELETE",
     });
     if (response.status === 200) {
+      navigation('/items');
       setAvailability(false);
     }
   }
