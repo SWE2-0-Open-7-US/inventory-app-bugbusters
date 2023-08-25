@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { SaucesList } from './SaucesList';
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { SaucesList } from "./SaucesList";
+import { Route, Routes } from "react-router-dom";
 
 // import and prepend the api url to any fetch calls
-import apiURL from '../api';
-import { ItemList } from './ItemList';
+import apiURL from "../api";
+import { ItemList } from "./ItemList";
+import { SingleItem } from "./SingleItem";
+import { EditItem } from "./EditItem";
 
 export const App = () => {
 
 	const [sauces, setSauces] = useState([]);
-
 
 	async function fetchSauces() {
 		try {
@@ -18,22 +19,23 @@ export const App = () => {
 
 			setSauces(saucesData);
 		} catch (err) {
-			console.log("Oh no an error! ", err)
+			console.log("Oh no an error! ", err);
 		}
-	};
+	}
 
 	useEffect(() => {
 		fetchSauces();
 	}, []);
 
 	return (
-		<main>
-			<Routes>
-				{/* <h1>Sauce Store</h1>
-				<h2>All things 🔥</h2> */}
-				<Route path='/sauceList' element={<SaucesList sauces={sauces} />} />
-				<Route path='/items' element={<ItemList />} />
-			</Routes>
-		</main>
-	)
-}
+			<main>
+				<Routes>
+					<Route path="/sauceList" element={<SaucesList sauces={sauces}/>}/>
+					<Route path="/items" element={<ItemList/>}/>
+					<Route path="/items/:itemId" element={<SingleItem/>}/>
+					<Route path="/items/:itemId/edit" element={<EditItem/>}/>
+					<Route path="*" element={<ItemList/>}/>
+				</Routes>
+			</main>
+	);
+};

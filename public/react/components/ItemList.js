@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Item } from "./Item";
 import apiURL from "../api";
+import { Link } from "react-router-dom";
 
 export function ItemList() {
-    const [items, setItems] = useState([]);
+	const [items, setItems] = useState([]);
 
-    async function fetchAllItems() {
-        try {
-            const response = await fetch(`${apiURL}/items`);
-            const itemsData = await response.json();
-            setItems(itemsData);
-        } catch (err) {
-            console.log('Error', err);
-        }
-    };
+	async function fetchAllItems() {
+		try {
+			const response = await fetch(`${apiURL}/items`);
+			const itemsData = await response.json();
+			setItems(itemsData);
+		} catch (err) {
+			console.log("Error", err);
+		}
+	}
 
-    useEffect(() => {
-        fetchAllItems();
-    }, []);
-    return (
-        <>
-            {items.map((item, idx) => (
-
-                <Item item={item} id={item.id} />
-            ))}
-        </>
-    )
+	useEffect(() => {
+		fetchAllItems();
+	}, []);
+	return (
+			<div style={{display: "flex", flexDirection: "column"}}>
+				{items.map((item) => (
+						<Link style={{textDecoration: "none", color: "black"}} key={item.id}
+									to={`/items/${item.id}`}>{item.name}</Link>
+				))}
+			</div>
+	);
 }
