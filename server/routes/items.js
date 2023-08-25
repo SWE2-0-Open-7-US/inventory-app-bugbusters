@@ -1,6 +1,7 @@
 const express = require("express");
 const itemsRouter = express.Router();
 const { Item } = require("../models/Item");
+const { validationResult, check } = require("express-validator");
 
 // GET / Item
 itemsRouter.get("/", async (req, res, next) => {
@@ -36,25 +37,35 @@ itemsRouter.delete("/:id", async (req, res, next) => {
 });
 
 // POST items
-itemsRouter.post('/', async (req, res, next) => {
+itemsRouter.post('/', [check('name', 'description', 'price', 'category').isLength({ min: 4, max: 25 }), check('name', 'description', 'price', 'category').not().isEmpty()], async (req, res, next) => {
   try {
-    const newItem = await Item.create(req.body);
-    if (!newItem) {
-      res.status(500).json({ message: 'Can not create Item!' })
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      res.json({ error: errors.array() });
+    } else {
+      const newItem = await Item.create(req.body);
+      if (!newItem) {
+        res.status(500).json({ message: 'Can not create Item!' })
+      }
+      res.json(newItem.name);
     }
-    res.json(newItem.name);
   } catch (error) {
     next(error);
   }
 });
 
 // PUT / Item:id
-itemsRouter.put("/:id", async (req, res, next) => {
+itemsRouter.put("/:id", [check('name', 'description', 'price', 'category').isLength({ min: 4, max: 25 }), check('name', 'description', 'price', 'category').not().isEmpty()], async (req, res, next) => {
   try {
-    const item = await Item.findByPk(req.params.id);
-    await item.update(req.body);
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      res.json({ error: errors.array() })
+    } else {
+      const item = await Item.findByPk(req.params.id);
+      await item.update(req.body);
 
-    res.send(item);
+      res.send(item);
+    }
   } catch (error) {
     next(error);
   }
