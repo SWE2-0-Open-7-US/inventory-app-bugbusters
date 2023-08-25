@@ -7,17 +7,16 @@ const SingleItem = () => {
 	const {itemId} = useParams();
 	const [item, setItem] = useState(null);
 
-	const [Availability, setAvailability] = useState(true);
-
-	async function handleClick() {
-		const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {
-			method: "DELETE",
-		});
-		if (response.status === 200) {
-			setAvailability(false);
-		}
-		navigation(`/items`);
-	}
+  const [Availability, setAvailability] = useState(true);
+  async function handleClick() {
+    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {
+      method: "DELETE",
+    });
+    if (response.status === 200) {
+      navigation('/items');
+      setAvailability(false);
+    }
+  }
 
 	useEffect(() => {
 		if (itemId) fetchSingleItem(itemId).then((data) => setItem(data));
