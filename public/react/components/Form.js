@@ -17,6 +17,7 @@ export function Form() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newItem)
         });
+        location.replace('http://localhost:1234/items/')
         setName('');
         setDescription('');
         setPrice('');

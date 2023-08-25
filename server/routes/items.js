@@ -35,6 +35,19 @@ itemsRouter.delete("/:id", async (req, res, next) => {
   }
 });
 
+// POST items
+itemsRouter.post('/', async (req, res, next) => {
+  try {
+    const newItem = await Item.create(req.body);
+    if (!newItem) {
+      res.status(500).json({ message: 'Can not create Item!' })
+    }
+    res.json(newItem.name);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // PUT / Item:id
 itemsRouter.put("/:id", async (req, res, next) => {
   try {
