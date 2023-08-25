@@ -17,7 +17,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => await db.sync({force: true}));
-
+//comment
 describe("Item", () => {
 	it("has expected properties", async () => {
 		expect(item).toHaveProperty("id");
