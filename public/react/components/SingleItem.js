@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { fetchSingleItem } from "../apis";
 import { useNavigate, useParams } from "react-router-dom";
 
+import apiURL from "../api";
+
 const SingleItem = () => {
 	const navigation = useNavigate();
 	const {itemId} = useParams();
@@ -10,7 +12,7 @@ const SingleItem = () => {
 	const [Availability, setAvailability] = useState(true);
 
 	async function handleClick() {
-		const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {
+		const response = await fetch(`http://localhost:${apiURL}/api/items/${itemId}`, {
 			method: "DELETE",
 		});
 		if (response.status === 200) {
