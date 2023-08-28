@@ -12,7 +12,7 @@ const SingleItem = () => {
 	const [Availability, setAvailability] = useState(true);
 
 	async function handleClick() {
-		const response = await fetch(`http://localhost:${apiURL}/api/items/${itemId}`, {
+		const response = await fetch(`${apiURL}/api/items/${itemId}`, {
 			method: "DELETE",
 		});
 		if (response.status === 200) {
