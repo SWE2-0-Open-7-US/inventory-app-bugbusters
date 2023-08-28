@@ -1,13 +1,42 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    background-color: white;
 }
 
+/*navbar*/
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Change to space-between */
+    align-items: center;
+    background-color: #333333;
+    color: #c0c0c0;
+    height: 80px;
+    padding: 10px;
+    opacity: 0.8;
+}
+
+#logo {
+    margin-left: 2rem;
+    font-size: x-large;
+}
+
+.navbar a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    margin-right: 2rem;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/*forms*/
 .form-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
     flex-direction: column;
     padding: 10rem;
