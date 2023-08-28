@@ -7,16 +7,17 @@ const SingleItem = () => {
 	const {itemId} = useParams();
 	const [item, setItem] = useState(null);
 
-  const [Availability, setAvailability] = useState(true);
-  async function handleClick() {
-    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {
-      method: "DELETE",
-    });
-    if (response.status === 200) {
-      navigation('/items');
-      setAvailability(false);
-    }
-  }
+	const [Availability, setAvailability] = useState(true);
+
+	async function handleClick() {
+		const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {
+			method: "DELETE",
+		});
+		if (response.status === 200) {
+			navigation("/items");
+			setAvailability(false);
+		}
+	}
 
 	useEffect(() => {
 		if (itemId) fetchSingleItem(itemId).then((data) => setItem(data));
@@ -27,19 +28,21 @@ const SingleItem = () => {
 	return (
 			<>
 				{Availability && (
-						<main>
-							<h3>{`${item.name} $${item.price}`}</h3>
-							<img src={item.image} alt="item-pic"/>
+						<main className="single-item-container">
+							<h3 id>{`${item.name}`}</h3>
+							<h2>{`$${item.price}`}</h2>
+							<img id="item-mg" src={item.image} alt="item-pic"/>
 							<p>{item.description}</p>
-							<p>{`Tags: ${item.category}`}</p>
+							<p><span style={{fontWeight: "bold"}}>Tags:</span> {item.category}</p>
 							<button
+									id="add-item-button"
 									onClick={() =>
 											navigation(`/items/${itemId}/edit`, {state: {item}})
 									}
 							>
 								Edit Item
 							</button>
-							<button onClick={handleClick}>Delete Item</button>
+							<button id="add-item-button" onClick={handleClick}>Delete Item</button>
 						</main>
 				)}
 			</>
