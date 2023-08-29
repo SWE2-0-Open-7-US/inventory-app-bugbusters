@@ -48,26 +48,23 @@ itemsRouter.delete("/:id", async (req, res, next) => {
 });
 
 // POST items
-itemsRouter.post(
-  "/",
-  [
-    check("name", "description", "price", "category").isLength({
-      min: 4,
-      max: 25,
-    }),
-    check("name", "description", "price", "category").not().isEmpty(),
-  ],
-  async (req, res, next) => {
-    try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        res.json({ error: errors.array() });
-      } else {
-        const newItem = await Item.create(req.body);
-        if (!newItem) {
-          res.status(500).json({ message: "Can not create Item!" });
-        }
-        res.json(newItem.name);
+itemsRouter.post('/', [check('name').isLength({ min: 4, max: 25 }),
+check('description').isLength({ min: 4, max: 25 }),
+check('price').isLength({ min: 4, max: 25 }),
+check('category').isLength({ min: 4, max: 25 }),
+check('name').not().isEmpty(),
+check('description').not().isEmpty(),
+check('price').not().isEmpty(),
+check('category').not().isEmpty(),
+], async (req, res, next) => {
+  try {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      res.json({ error: errors.array() });
+    } else {
+      const newItem = await Item.create(req.body);
+      if (!newItem) {
+        res.status(500).json({ message: 'Can not create Item!' })
       }
     } catch (error) {
       next(error);
@@ -76,23 +73,22 @@ itemsRouter.post(
 );
 
 // PUT / Item:id
-itemsRouter.put(
-  "/:id",
-  [
-    check("name", "description", "price", "category").isLength({
-      min: 4,
-      max: 25,
-    }),
-    check("name", "description", "price", "category").not().isEmpty(),
-  ],
-  async (req, res, next) => {
-    try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        res.json({ error: errors.array() });
-      } else {
-        const item = await Item.findByPk(req.params.id);
-        await item.update(req.body);
+itemsRouter.put("/:id", [check('name').isLength({ min: 4, max: 25 }),
+check('description').isLength({ min: 4, max: 25 }),
+check('price').isLength({ min: 4, max: 25 }),
+check('category').isLength({ min: 4, max: 25 }),
+check('name').not().isEmpty(),
+check('description').not().isEmpty(),
+check('price').not().isEmpty(),
+check('category').not().isEmpty()], async (req, res, next) => {
+  try {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      res.json({ error: errors.array() })
+    } else {
+      const item = await Item.findByPk(req.params.id);
+      await item.update(req.body);
+
 
         res.send(item);
       }
