@@ -7,6 +7,12 @@ const { validationResult, check } = require("express-validator");
 itemsRouter.get("/", async (req, res, next) => {
   try {
     const items = await Item.findAll();
+
+    if (!items) {
+      res.status(404).json({ message: "Item not found" });
+      return;
+    }
+
     res.json(items);
   } catch (err) {
     console.log(`Can not find all items!`);
@@ -18,6 +24,11 @@ itemsRouter.get("/", async (req, res, next) => {
 itemsRouter.get("/:id", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.id);
+    if (!item) {
+      res.status(404).json({ message: "Item not found" });
+      return;
+    }
+
     res.send(item);
   } catch (error) {
     next(error);
@@ -37,7 +48,15 @@ itemsRouter.delete("/:id", async (req, res, next) => {
 });
 
 // POST items
-itemsRouter.post('/', [check('name', 'description', 'price', 'category').isLength({ min: 4, max: 25 }), check('name', 'description', 'price', 'category').not().isEmpty()], async (req, res, next) => {
+itemsRouter.post('/', [check('name').isLength({ min: 4, max: 25 }),
+check('description').isLength({ min: 4, max: 25 }),
+check('price').isLength({ min: 4, max: 25 }),
+check('category').isLength({ min: 4, max: 25 }),
+check('name').not().isEmpty(),
+check('description').not().isEmpty(),
+check('price').not().isEmpty(),
+check('category').not().isEmpty(),
+], async (req, res, next) => {
   try {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -47,7 +66,6 @@ itemsRouter.post('/', [check('name', 'description', 'price', 'category').isLengt
       if (!newItem) {
         res.status(500).json({ message: 'Can not create Item!' })
       }
-      res.json(newItem.name);
     }
   } catch (error) {
     next(error);
@@ -55,7 +73,14 @@ itemsRouter.post('/', [check('name', 'description', 'price', 'category').isLengt
 });
 
 // PUT / Item:id
-itemsRouter.put("/:id", [check('name', 'description', 'price', 'category').isLength({ min: 4, max: 25 }), check('name', 'description', 'price', 'category').not().isEmpty()], async (req, res, next) => {
+itemsRouter.put("/:id", [check('name').isLength({ min: 4, max: 25 }),
+check('description').isLength({ min: 4, max: 25 }),
+check('price').isLength({ min: 4, max: 25 }),
+check('category').isLength({ min: 4, max: 25 }),
+check('name').not().isEmpty(),
+check('description').not().isEmpty(),
+check('price').not().isEmpty(),
+check('category').not().isEmpty()], async (req, res, next) => {
   try {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -64,10 +89,12 @@ itemsRouter.put("/:id", [check('name', 'description', 'price', 'category').isLen
       const item = await Item.findByPk(req.params.id);
       await item.update(req.body);
 
+
       res.send(item);
     }
   } catch (error) {
     next(error);
   }
-});
+}
+);
 module.exports = itemsRouter;
