@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import apiURL from "../api";
+import apiURL from "../apis/api";
 import { Link, useNavigate } from "react-router-dom";
 
 // comment

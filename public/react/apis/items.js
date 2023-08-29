@@ -1,4 +1,4 @@
-import apiURL from "../api";
+import apiURL from "./api";
 
 const fetchSingleItem = async (itemId) => {
 	try {
