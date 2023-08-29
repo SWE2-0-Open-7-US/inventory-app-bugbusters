@@ -66,11 +66,11 @@ check('category').not().isEmpty(),
       if (!newItem) {
         res.status(500).json({ message: 'Can not create Item!' })
       }
-    } catch (error) {
-      next(error);
     }
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // PUT / Item:id
 itemsRouter.put("/:id", [check('name').isLength({ min: 4, max: 25 }),
@@ -90,11 +90,11 @@ check('category').not().isEmpty()], async (req, res, next) => {
       await item.update(req.body);
 
 
-        res.send(item);
-      }
-    } catch (error) {
-      next(error);
+      res.send(item);
     }
+  } catch (error) {
+    next(error);
   }
+}
 );
 module.exports = itemsRouter;
