@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import apiURL from "../api";
+import apiURL from "../apis/api";
 import { useNavigate } from "react-router-dom";
 
 export function Form() {

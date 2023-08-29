@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchSingleItem } from "../apis";
 import { useNavigate, useParams } from "react-router-dom";
 
-import apiURL from "../api";
+import apiURL from "../apis/api";
 
 const SingleItem = () => {
 	const navigation = useNavigate();
@@ -31,7 +31,7 @@ const SingleItem = () => {
 			<>
 				{Availability && (
 						<main className="single-item-container">
-							<h3 id>{`${item.name}`}</h3>
+							<h3>{`${item.name}`}</h3>
 							<h2>{`$${item.price}`}</h2>
 							<img id="item-mg" src={item.image} alt="item-pic"/>
 							<p>{item.description}</p>
