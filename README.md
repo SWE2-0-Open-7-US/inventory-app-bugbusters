@@ -7,6 +7,8 @@ You are a team of developers for an e-commerce company. The Engineering team is 
 ## Tech Stack
 
 Javascript
+HTML
+CSS
 React
 SQLite
 Express
