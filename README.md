@@ -6,7 +6,7 @@ You are a team of developers for an e-commerce company. The Engineering team is 
 
 ## Tech Stack
 
-1. JavascriptZ
+1. Javascript
 2. CSS
 3. HTML
 4. React
