@@ -2,7 +2,7 @@
 
 # Inventory App - Demozon
 
-You are a team of developers for an e-commerce company. The Engineering team is rebuilding their inventory tracking app from the ground up. This a Full-Sack (front and back end) RESTful CRUD application to track the items in an inventory.
+You are a team of developers for an e-commerce company. The Engineering team is rebuilding their inventory tracking app from the ground up. This is a Full-Sack (front and back end) RESTful CRUD application to track the items in an inventory.
 
 ## Tech Stack
 
