@@ -28,7 +28,7 @@ Express
 
 ### Video on Application Functionlity
 
-[![Watch the video]](https://clipchamp.com/watch/mvIjSyszngG)
+https://clipchamp.com/watch/mvIjSyszngG
 
 ## Delpoyed Website
 
