@@ -6,11 +6,12 @@ You are a team of developers for an e-commerce company. The Engineering team is 
 
 ## Tech Stack
 
-JavascriptZ
-CSS
-React
-SQLite
-Express
+1. JavascriptZ
+2. CSS
+3. HTML
+4. React
+5. SQLite
+6. Express
 
 ## Getting Started
 
@@ -29,7 +30,7 @@ Express
 
 ### Video on Application Functionlity
 
-[![Watch the video]](https://clipchamp.com/watch/mvIjSyszngG)
+[[Watch the video]](https://clipchamp.com/watch/mvIjSyszngG)
 
 ## Delpoyed Website
 
