@@ -5,6 +5,7 @@
 You are a team of developers for an e-commerce company. The Engineering team is rebuilding their inventory tracking app from the ground up. Your team has been tasked with creating a Full-Sack (front and back end) RESTful CRUD application to track the items.
 
 ## Tech Stack
+
 Javascript
 React
 SQLite
@@ -27,7 +28,7 @@ Express
 
 ### Video on Application Functionlity
 
-[Watch the video](https://clipchamp.com/watch/mvIjSyszngG)
+[![Watch the video]](https://clipchamp.com/watch/mvIjSyszngG)
 
 ## Delpoyed Website
 
