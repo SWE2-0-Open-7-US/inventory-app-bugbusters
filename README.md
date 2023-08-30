@@ -21,7 +21,7 @@ You are a team of developers for an e-commerce company. The Engineering team is 
 
 ### Video on Application Functionlity
 
-[![Watch the video](https://clipchamp.com/watch/mvIjSyszngG)]
+[![Watch the video](https://clipchamp.com/watch/mvIjSyszngG)] (https://clipchamp.com/watch/mvIjSyszngG)
 
 ## Delpoyed Website
 
