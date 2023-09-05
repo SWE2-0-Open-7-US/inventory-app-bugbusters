@@ -16,49 +16,50 @@ const EditItem = () => {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		const updateData = {name, description, price, category, image};
-		await updateItem(item.id, updateData)
+		await updateItem(item.id, updateData);
 		setName("");
 		setDescription("");
 		setPrice("");
 		setCategory("");
 		setImage("");
-		navigate(`/items/${item.id}`)
-	}
+		navigate(`/items/${item.id}`);
+	};
 
 	return (
-			<div>
+			<div className="form-wrapper">
 				<h1>Edit Item</h1>
 				<form className="form-container" onSubmit={submitHandler}>
 					<section className="form-section">
-						<label htmlFor="item-name">Name</label>
+						<label htmlFor="item-name">Name:</label>
 						<input id="item-name" className="form-input" type="text" placeholder="Name" value={name}
 									 onChange={(e) => setName(e.target.value)}/>
 					</section>
 					<section className="form-section">
-						<label htmlFor="item-description">Description</label>
-						<input id="item-description" className="form-input" type="text" placeholder="Description"
-									 value={description}
-									 onChange={(e) => setDescription(e.target.value)}/>
+						<label htmlFor="item-description">Description:</label>
+						<textarea id="item-description" className="form-input" type="text" placeholder="Description"
+											value={description}
+											onChange={(e) => setDescription(e.target.value)}
+											rows="4"/>
 					</section>
 					<section className="form-section">
-						<label htmlFor="item-price">Price</label>
+						<label htmlFor="item-price">Price:</label>
 						<input id="item-price" className="form-input" type="text" placeholder="Price" value={price}
 									 onChange={(e) => setPrice(e.target.value)}/>
 					</section>
 					<section className="form-section">
-						<label htmlFor="item-category">Category</label>
+						<label htmlFor="item-category">Category:</label>
 						<input id="item-category" className="form-input" type="text" placeholder="Category" value={category}
 									 onChange={(e) => setCategory(e.target.value)}/>
 					</section>
 					<section className="form-section">
-						<label htmlFor="item-image">Image</label>
+						<label htmlFor="item-image">Image:</label>
 						<input id="item-image" className="form-input" type="text" placeholder="Image" value={image}
 									 onChange={(e) => setImage(e.target.value)}/>
 					</section>
 					<button className="form-submit" type="submit">Submit</button>
 				</form>
 			</div>
-	)
-}
+	);
+};
 
-export { EditItem }
+export { EditItem };
